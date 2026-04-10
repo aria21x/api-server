@@ -1,6 +1,10 @@
 {
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS"
+  },
   "deploy": {
     "startCommand": "uvicorn apps.api_server.main:app --host 0.0.0.0 --port $PORT",
-    "preDeployCommand": "python scripts/bootstrap_db.py"
+    "restartPolicyType": "ON_FAILURE"
   }
 }
