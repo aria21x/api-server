@@ -1,6 +1,7 @@
 fastapi
 uvicorn
-psycopg2-binary
+pymysql==1.1.0
+mysqlclient==2.2.4
 redis
 python-dotenv
 pydantic
