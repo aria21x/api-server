@@ -1,6 +1,10 @@
 from pathlib import Path
-from core.db.postgres import get_conn
+import sys
 
+# Add project root to path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from core.db.postgres import get_conn
 
 def main() -> None:
     schema = Path("core/db/schema.sql").read_text(encoding="utf-8")
