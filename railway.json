@@ -1,11 +1,11 @@
-[phases.setup]
-nixPkgs = ["python312", "postgresql", "redis"]
-
-[phases.install]
-cmds = ["pip install -r requirements.txt"]
-
-[phases.build]
-cmds = ["echo 'Building alert-worker'"]
-
-[start]
-cmd = "python -m apps.alert_worker.main"
+{
+  "build": {
+    "builder": "NIXPACKS",
+    "nixpacksConfigPath": "nixpacks.toml"
+  },
+  "deploy": {
+    "startCommand": "PYTHONPATH=/app python -m apps.alert_worker.main",
+    "healthcheckPath": "/health",
+    "restartPolicyType": "ON_FAILURE"
+  }
+}
