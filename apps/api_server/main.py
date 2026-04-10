@@ -10,9 +10,9 @@ def _count(query: str, params: tuple = ()) -> int:
     return int(row.get('c') or 0)
 
 
-@app.get('/health')
-def health():
-    return {'status': 'ok'}
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
 
 
 @app.get('/stats')
