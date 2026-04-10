@@ -1,9 +1,6 @@
 {
-  "build": {
-    "builder": "DOCKERFILE",
-    "dockerfilePath": "apps/ingest_rust/Dockerfile"
-  },
   "deploy": {
-    "startCommand": "bash -lc \"cd apps/ingest_rust && cargo run --release\""
+    "startCommand": "uvicorn apps.api_server.main:app --host 0.0.0.0 --port $PORT",
+    "preDeployCommand": "python scripts/bootstrap_db.py"
   }
 }
