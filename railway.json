@@ -4,8 +4,8 @@
     "nixpacksConfigPath": "nixpacks.toml"
   },
   "deploy": {
-    "startCommand": "PYTHONPATH=/app python -m apps.alert_worker.main",
-    "healthcheckPath": "/health",
-    "restartPolicyType": "ON_FAILURE"
+    "startCommand": "uvicorn apps.api_server.main:app --host 0.0.0.0 --port $PORT",
+    "restartPolicyType": "ON_FAILURE",
+    "healthcheckPath": "/health"
   }
 }
